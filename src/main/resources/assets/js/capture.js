@@ -36,7 +36,7 @@ function getStream_1 (type) {
         }
 
         mediaRecorder_1.onstop = function(e) {
-            var blob = new Blob(chunks_1, { 'type' : 'audio/ogg; codecs=opus' });
+            var blob = new Blob(chunks_1, { 'type' : 'audio/mpeg' });
             chunks_1 = [];
             var audioURL = window.URL.createObjectURL(blob);
 
