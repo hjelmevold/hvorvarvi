@@ -2,6 +2,9 @@ var mustacheLib = require('/lib/xp/mustache');
 var router = require('/lib/router')();
 var helper = require('/lib/helper');
 var swController = require('/lib/pwa/sw-controller');
+var upload = require('/upload.js');
+var download = require('/download.js');
+
 var siteTitle = 'PWA Starter';
 
 var renderPage = function(pageName) {
@@ -35,6 +38,10 @@ router.get('/capture', renderPage('capture.html'));
 
 router.get('/sw.js', swController.get);
 
-exports.get = function (req) {
+router.post('/upload', upload.handleUpload);
+
+router.get('/download', download.handleDownload);
+
+exports.all = function (req) {
     return router.dispatch(req);
 };
